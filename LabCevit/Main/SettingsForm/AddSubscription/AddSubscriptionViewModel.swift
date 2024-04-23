@@ -34,7 +34,7 @@ class AddSubscriptionViewModel: ObservableObject {
         service.createSubscription(subscriptionModel: createSubModel) { [weak self] result in
             DispatchQueue.main.async {
                 switch result {
-                case .success(let status):
+                case .success(_):
                     self?.dismissView = true
                     print("Subscription created successfully")
                     completion(true)

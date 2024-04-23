@@ -71,7 +71,7 @@ class AddClientViewModel: ObservableObject {
         service.createClient(clientModel: createClientModel) { [weak self] result in
             DispatchQueue.main.async {
                 switch result {
-                case .success(let status):
+                case .success(_):
                     self?.dismissView = true
                     print("Client created successfully")
                     completion(true)
