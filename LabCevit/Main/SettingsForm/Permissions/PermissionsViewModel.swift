@@ -6,3 +6,9 @@
 //
 
 import Foundation
+
+class PermissionsViewModel: ObservableObject {
+    init() {
+        
+    }
+}
