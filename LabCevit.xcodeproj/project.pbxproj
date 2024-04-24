@@ -24,6 +24,10 @@
 		55BC89262BD88BF900712A11 /* MachineSpecsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55BC89252BD88BF800712A11 /* MachineSpecsViewModel.swift */; };
 		55BC89292BD8901900712A11 /* AddMachineSpecsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55BC89282BD8901900712A11 /* AddMachineSpecsView.swift */; };
 		55BC892B2BD8902000712A11 /* AddMachineSpecsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55BC892A2BD8902000712A11 /* AddMachineSpecsViewModel.swift */; };
+		55BC892E2BD9815300712A11 /* MachineUnitsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55BC892D2BD9815300712A11 /* MachineUnitsView.swift */; };
+		55BC89302BD9815B00712A11 /* MachineUnitsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55BC892F2BD9815B00712A11 /* MachineUnitsViewModel.swift */; };
+		55BC89332BD9AC2500712A11 /* AddMachineUnitsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55BC89322BD9AC2500712A11 /* AddMachineUnitsView.swift */; };
+		55BC89352BD9AC2C00712A11 /* AddMachineUnitsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55BC89342BD9AC2C00712A11 /* AddMachineUnitsViewModel.swift */; };
 		55C8255C2BCF37EA00BFFA07 /* ClientsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C8255B2BCF37EA00BFFA07 /* ClientsView.swift */; };
 		55C8255E2BCF37F500BFFA07 /* ClientsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C8255D2BCF37F500BFFA07 /* ClientsViewModel.swift */; };
 		55C825602BCF3E5800BFFA07 /* ApiServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C8255F2BCF3E5800BFFA07 /* ApiServices.swift */; };
@@ -69,6 +73,10 @@
 		55BC89252BD88BF800712A11 /* MachineSpecsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MachineSpecsViewModel.swift; sourceTree = "<group>"; };
 		55BC89282BD8901900712A11 /* AddMachineSpecsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMachineSpecsView.swift; sourceTree = "<group>"; };
 		55BC892A2BD8902000712A11 /* AddMachineSpecsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMachineSpecsViewModel.swift; sourceTree = "<group>"; };
+		55BC892D2BD9815300712A11 /* MachineUnitsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MachineUnitsView.swift; sourceTree = "<group>"; };
+		55BC892F2BD9815B00712A11 /* MachineUnitsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MachineUnitsViewModel.swift; sourceTree = "<group>"; };
+		55BC89322BD9AC2500712A11 /* AddMachineUnitsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMachineUnitsView.swift; sourceTree = "<group>"; };
+		55BC89342BD9AC2C00712A11 /* AddMachineUnitsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMachineUnitsViewModel.swift; sourceTree = "<group>"; };
 		55C8255B2BCF37EA00BFFA07 /* ClientsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientsView.swift; sourceTree = "<group>"; };
 		55C8255D2BCF37F500BFFA07 /* ClientsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientsViewModel.swift; sourceTree = "<group>"; };
 		55C8255F2BCF3E5800BFFA07 /* ApiServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiServices.swift; sourceTree = "<group>"; };
@@ -120,6 +128,8 @@
 		55BC89062BD752E900712A11 /* SettingsForm */ = {
 			isa = PBXGroup;
 			children = (
+				55BC89312BD9AC1400712A11 /* AddMachineUnits */,
+				55BC892C2BD9814200712A11 /* MachineUnits */,
 				55BC89272BD8900D00712A11 /* AddMachineSpecs */,
 				55BC89222BD88BE700712A11 /* MachineSpecs */,
 				55BC891D2BD8845200712A11 /* AddPermissions */,
@@ -192,6 +202,24 @@
 				55BC892A2BD8902000712A11 /* AddMachineSpecsViewModel.swift */,
 			);
 			path = AddMachineSpecs;
+			sourceTree = "<group>";
+		};
+		55BC892C2BD9814200712A11 /* MachineUnits */ = {
+			isa = PBXGroup;
+			children = (
+				55BC892D2BD9815300712A11 /* MachineUnitsView.swift */,
+				55BC892F2BD9815B00712A11 /* MachineUnitsViewModel.swift */,
+			);
+			path = MachineUnits;
+			sourceTree = "<group>";
+		};
+		55BC89312BD9AC1400712A11 /* AddMachineUnits */ = {
+			isa = PBXGroup;
+			children = (
+				55BC89322BD9AC2500712A11 /* AddMachineUnitsView.swift */,
+				55BC89342BD9AC2C00712A11 /* AddMachineUnitsViewModel.swift */,
+			);
+			path = AddMachineUnits;
 			sourceTree = "<group>";
 		};
 		55C825582BCF37AF00BFFA07 /* Services */ = {
@@ -421,6 +449,8 @@
 				55C9BA1E2B8F0920000DA101 /* Buttons.swift in Sources */,
 				55BC89212BD8846400712A11 /* AddPermissionsViewModel.swift in Sources */,
 				55BC891A2BD86C2A00712A11 /* AddUsersView.swift in Sources */,
+				55BC892E2BD9815300712A11 /* MachineUnitsView.swift in Sources */,
+				55BC89352BD9AC2C00712A11 /* AddMachineUnitsViewModel.swift in Sources */,
 				55BC892B2BD8902000712A11 /* AddMachineSpecsViewModel.swift in Sources */,
 				55C8256A2BCF4E1700BFFA07 /* AddClientView.swift in Sources */,
 				55C9BA332B900D39000DA101 /* RegisterView.swift in Sources */,
@@ -443,10 +473,12 @@
 				55BC89262BD88BF900712A11 /* MachineSpecsViewModel.swift in Sources */,
 				55C9BA2C2B8F0CC5000DA101 /* SignUpView.swift in Sources */,
 				55BC891C2BD86C3200712A11 /* AddUsersViewModel.swift in Sources */,
+				55BC89302BD9815B00712A11 /* MachineUnitsViewModel.swift in Sources */,
 				55BC89102BD77E5700712A11 /* PermissionsView.swift in Sources */,
 				55BC89292BD8901900712A11 /* AddMachineSpecsView.swift in Sources */,
 				55C9BA152B8EFFEC000DA101 /* TabBarView.swift in Sources */,
 				55BC89242BD88BF000712A11 /* MachineSpecsView.swift in Sources */,
+				55BC89332BD9AC2500712A11 /* AddMachineUnitsView.swift in Sources */,
 				55C9BA1A2B8F0685000DA101 /* EmailLoginView.swift in Sources */,
 				55BC89172BD784FB00712A11 /* AddSubscriptionViewModel.swift in Sources */,
 				55BC891F2BD8845B00712A11 /* AddPermissionsView.swift in Sources */,

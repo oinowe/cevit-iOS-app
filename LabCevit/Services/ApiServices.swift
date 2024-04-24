@@ -225,6 +225,49 @@ struct ApiServices {
         }
     }
     
+    // MARK: Machine Units
+    func getMachineUnits(machineId: Int, completion: @escaping (Result<[MachineUnitsModel], Error>) -> Void) {
+        let url = "\(baseURL)/machineUnits"
+        
+        let parameters: [String: Any] = ["machineId": machineId]
+        
+        let headers: HTTPHeaders = [
+            "x-api-key": "\(apiKey)",
+            "Accept": "application/json"
+        ]
+
+        AF.request(url, method: .get, parameters: parameters, headers: headers).responseDecodable(of: MachineUnitsResponse.self) { response in
+            switch response.result {
+            case .success(let data):
+                completion(.success(data.sample_units))
+            case .failure(let error):
+                completion(.failure(error))
+            }
+        }
+    }
+    
+    
+    func createMachineUnit(createMachineUnitModel: CreateMachineUnitsModel, completion: @escaping (Result<Bool, Error>) -> Void) {
+        let url = "\(baseURL)/machineUnits"
+        let headers: HTTPHeaders = [
+            "x-api-key": "\(apiKey)",
+            "Accept": "application/json",
+            "Content-Type": "application/json"
+        ]
+        
+        print("params: ", createMachineUnitModel)
+
+        AF.request(url, method: .post, parameters: createMachineUnitModel, encoder: JSONParameterEncoder.default, headers: headers)
+            .responseDecodable(of: GenericResponse.self) { response in
+            switch response.result {
+            case .success(_):
+                completion(.success(true))
+            case .failure(let error):
+                completion(.failure(error))
+            }
+        }
+    }
+    
     
     private func getAccessToken(completion: @escaping(String) -> ()) {
         

@@ -21,17 +21,21 @@ struct MachineSpecsView: View {
         List {
             ForEach(viewModel.machineSpecs, id: \.self) { machine in
                 HStack {
-                    VStack(alignment: .leading) {
-                        Text(machine.name)
-                            .bold()
-                            .font(.system(size: 20))
-                        Text(machine.serial_number)
+                    NavigationLink {
+                        MachineUnitsView(machineId: machine.id, machineName: machine.name)
+                    } label: {
+                        VStack(alignment: .trailing) {
+                            Image(systemName: "macpro.gen2.fill")
+                                .foregroundColor(.accentCol)
+                        }
+                        VStack(alignment: .leading) {
+                            Text(machine.name)
+                                .bold()
+                                .font(.system(size: 20))
+                            Text(machine.serial_number)
+                        }                        
                     }
-                    Spacer()
-                    VStack(alignment: .trailing) {
-                        Image(systemName: "macpro.gen2.fill")
-                            .foregroundColor(.accentCol)
-                    }
+                    .foregroundColor(.black)
                 }
             }
             // .onDelete(perform: delete)

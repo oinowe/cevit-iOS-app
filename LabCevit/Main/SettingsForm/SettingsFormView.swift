@@ -45,17 +45,6 @@ struct SettingsFormView: View {
                         Image(systemName: "macpro.gen2.fill")
                     }
                 }
-                
-                NavigationLink {
-                    // TODO: Change for correct one
-                    MachineSpecsView()
-                } label: {
-                    Label {
-                        Text("Unidades de muestreo")
-                    } icon: {
-                        Image(systemName: "book.pages.fill")
-                    }
-                }
             } header: {
                 Text("Máquina")
             }
