@@ -184,6 +184,48 @@ struct ApiServices {
     }
     
     
+    // MARK: Machine specs
+    func getMachineSpecs(completion: @escaping (Result<[MachineSpecsModel], Error>) -> Void) {
+        let url = "\(baseURL)/machineSpecs"
+        
+        let headers: HTTPHeaders = [
+            "x-api-key": "\(apiKey)",
+            "Accept": "application/json"
+        ]
+
+        AF.request(url, method: .get, headers: headers).responseDecodable(of: MachineSpecsResponse.self) { response in
+            switch response.result {
+            case .success(let data):
+                completion(.success(data.machines))
+            case .failure(let error):
+                completion(.failure(error))
+            }
+        }
+    }
+    
+    
+    func createMachineSpecs(createMachineSpecsModel: CreateMachineSpecsModel, completion: @escaping (Result<Bool, Error>) -> Void) {
+        let url = "\(baseURL)/machineSpecs"
+        let headers: HTTPHeaders = [
+            "x-api-key": "\(apiKey)",
+            "Accept": "application/json",
+            "Content-Type": "application/json"
+        ]
+        
+        print("params: ", createMachineSpecsModel)
+
+        AF.request(url, method: .post, parameters: createMachineSpecsModel, encoder: JSONParameterEncoder.default, headers: headers)
+            .responseDecodable(of: GenericResponse.self) { response in
+            switch response.result {
+            case .success(_):
+                completion(.success(true))
+            case .failure(let error):
+                completion(.failure(error))
+            }
+        }
+    }
+    
+    
     private func getAccessToken(completion: @escaping(String) -> ()) {
         
     }

@@ -37,8 +37,7 @@ struct SettingsFormView: View {
 
             Section {
                 NavigationLink {
-                    // TODO: Change for new one
-                    ClientsView()
+                    MachineSpecsView()
                 } label: {
                     Label {
                         Text("Especificaciones")
@@ -49,7 +48,7 @@ struct SettingsFormView: View {
                 
                 NavigationLink {
                     // TODO: Change for correct one
-                    ClientsView()
+                    MachineSpecsView()
                 } label: {
                     Label {
                         Text("Unidades de muestreo")
