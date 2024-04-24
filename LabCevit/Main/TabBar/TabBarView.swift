@@ -13,17 +13,17 @@ struct TabBarView: View {
         TabView {
             HomeView()
                 .tabItem {
-                    Label("Home", systemImage: "house")
+                    Label("Ordenes", systemImage: "newspaper.fill")
                 }
             
             SearchView()
                 .tabItem {
-                    Label("Search", systemImage: "magnifyingglass")
+                    Label("Info", systemImage: "person.fill.viewfinder")
                 }
             
             ClientsView()
                 .tabItem {
-                    Label("Profile", systemImage: "person")
+                    Label("Admin", systemImage: "person.badge.shield.checkmark")
                 }
         }
     }
@@ -58,21 +58,6 @@ struct SearchView: View {
     }
 }
 
-// Define the Profile view
-struct ProfileView: View {
-    var body: some View {
-        ZStack {
-            Color.lightColor.edgesIgnoringSafeArea(.all)
-            
-            // Your content
-            VStack {
-                Text("Profile")
-                    .font(.largeTitle)
-                    .foregroundColor(.black)
-            }
-        }
-    }
-}
 
 #Preview {
     TabBarView()
