@@ -28,6 +28,8 @@
 		55BC89302BD9815B00712A11 /* MachineUnitsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55BC892F2BD9815B00712A11 /* MachineUnitsViewModel.swift */; };
 		55BC89332BD9AC2500712A11 /* AddMachineUnitsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55BC89322BD9AC2500712A11 /* AddMachineUnitsView.swift */; };
 		55BC89352BD9AC2C00712A11 /* AddMachineUnitsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55BC89342BD9AC2C00712A11 /* AddMachineUnitsViewModel.swift */; };
+		55BC893A2BD9B25200712A11 /* ReceptionOrdersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55BC89392BD9B25200712A11 /* ReceptionOrdersView.swift */; };
+		55BC893C2BD9B25900712A11 /* ReceptionOrdersViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55BC893B2BD9B25900712A11 /* ReceptionOrdersViewModel.swift */; };
 		55C8255C2BCF37EA00BFFA07 /* ClientsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C8255B2BCF37EA00BFFA07 /* ClientsView.swift */; };
 		55C8255E2BCF37F500BFFA07 /* ClientsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C8255D2BCF37F500BFFA07 /* ClientsViewModel.swift */; };
 		55C825602BCF3E5800BFFA07 /* ApiServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C8255F2BCF3E5800BFFA07 /* ApiServices.swift */; };
@@ -77,6 +79,8 @@
 		55BC892F2BD9815B00712A11 /* MachineUnitsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MachineUnitsViewModel.swift; sourceTree = "<group>"; };
 		55BC89322BD9AC2500712A11 /* AddMachineUnitsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMachineUnitsView.swift; sourceTree = "<group>"; };
 		55BC89342BD9AC2C00712A11 /* AddMachineUnitsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMachineUnitsViewModel.swift; sourceTree = "<group>"; };
+		55BC89392BD9B25200712A11 /* ReceptionOrdersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceptionOrdersView.swift; sourceTree = "<group>"; };
+		55BC893B2BD9B25900712A11 /* ReceptionOrdersViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceptionOrdersViewModel.swift; sourceTree = "<group>"; };
 		55C8255B2BCF37EA00BFFA07 /* ClientsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientsView.swift; sourceTree = "<group>"; };
 		55C8255D2BCF37F500BFFA07 /* ClientsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientsViewModel.swift; sourceTree = "<group>"; };
 		55C8255F2BCF3E5800BFFA07 /* ApiServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiServices.swift; sourceTree = "<group>"; };
@@ -222,6 +226,35 @@
 			path = AddMachineUnits;
 			sourceTree = "<group>";
 		};
+		55BC89362BD9B1B600712A11 /* AdminViews */ = {
+			isa = PBXGroup;
+			children = (
+				55C825592BCF37CD00BFFA07 /* Clients */,
+				55C825682BCF4E0D00BFFA07 /* AddClient */,
+				55BC89012BD7507000712A11 /* Users */,
+				55BC89182BD86C1600712A11 /* AddUsers */,
+				55BC89062BD752E900712A11 /* SettingsForm */,
+			);
+			path = AdminViews;
+			sourceTree = "<group>";
+		};
+		55BC89372BD9B20D00712A11 /* UserViews */ = {
+			isa = PBXGroup;
+			children = (
+				55BC89382BD9B24400712A11 /* ReceptionOrders */,
+			);
+			path = UserViews;
+			sourceTree = "<group>";
+		};
+		55BC89382BD9B24400712A11 /* ReceptionOrders */ = {
+			isa = PBXGroup;
+			children = (
+				55BC89392BD9B25200712A11 /* ReceptionOrdersView.swift */,
+				55BC893B2BD9B25900712A11 /* ReceptionOrdersViewModel.swift */,
+			);
+			path = ReceptionOrders;
+			sourceTree = "<group>";
+		};
 		55C825582BCF37AF00BFFA07 /* Services */ = {
 			isa = PBXGroup;
 			children = (
@@ -252,11 +285,8 @@
 		55C9BA122B8EFFBE000DA101 /* Main */ = {
 			isa = PBXGroup;
 			children = (
-				55BC89062BD752E900712A11 /* SettingsForm */,
-				55BC89182BD86C1600712A11 /* AddUsers */,
-				55BC89012BD7507000712A11 /* Users */,
-				55C825682BCF4E0D00BFFA07 /* AddClient */,
-				55C825592BCF37CD00BFFA07 /* Clients */,
+				55BC89372BD9B20D00712A11 /* UserViews */,
+				55BC89362BD9B1B600712A11 /* AdminViews */,
 				55C9BA132B8EFFC6000DA101 /* TabBar */,
 			);
 			path = Main;
@@ -459,6 +489,7 @@
 				55F1691E2B84323400A0E057 /* AuthenticationView.swift in Sources */,
 				55BC89092BD7530900712A11 /* SettingsFormView.swift in Sources */,
 				55BC890B2BD77E0E00712A11 /* SubscriptionsView.swift in Sources */,
+				55BC893C2BD9B25900712A11 /* ReceptionOrdersViewModel.swift in Sources */,
 				55BC89032BD750B800712A11 /* UsersView.swift in Sources */,
 				55C8256C2BD0949400BFFA07 /* AddClientViewModel.swift in Sources */,
 				55C9BA1C2B8F068F000DA101 /* EmailLoginModel.swift in Sources */,
@@ -467,6 +498,7 @@
 				55BC89122BD77E5E00712A11 /* PermissionsViewModel.swift in Sources */,
 				55C9BA112B8EFE3D000DA101 /* Colors.swift in Sources */,
 				55C9BA352B900D40000DA101 /* RegisterModel.swift in Sources */,
+				55BC893A2BD9B25200712A11 /* ReceptionOrdersView.swift in Sources */,
 				55BC89052BD752E400712A11 /* UsersViewModel.swift in Sources */,
 				55C825602BCF3E5800BFFA07 /* ApiServices.swift in Sources */,
 				55BC89152BD784F200712A11 /* AddSubscriptionView.swift in Sources */,
