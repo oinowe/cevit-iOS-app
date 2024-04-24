@@ -11,7 +11,7 @@ import SwiftUI
 struct TabBarView: View {
     var body: some View {
         TabView {
-            HomeView()
+            ReceptionOrdersView()
                 .tabItem {
                     Label("Ordenes", systemImage: "newspaper.fill")
                 }
@@ -29,20 +29,6 @@ struct TabBarView: View {
     }
 }
 
-// MARK: TESTING Views
-// Define the Home view
-struct HomeView: View {
-    var body: some View {
-        ZStack {
-            Color.lightColor.edgesIgnoringSafeArea(.all)
-            
-            VStack {
-                Text("Home")
-                    .font(.largeTitle)
-            }
-        }
-    }
-}
 
 // Define the Search view
 struct SearchView: View {

@@ -19,6 +19,7 @@ struct CreateUserModel: Codable {
     var type: String
     var external: Bool
     var permissions: Int
+    var temporary_password: String
 }
 
 
@@ -56,10 +57,10 @@ class AddUsersViewModel: ObservableObject {
     }
     
     
-    func createUser(clientId: Int, name: String, lastName: String, email: String, phoneNumber: String, type: String, external: Bool, permissionsId: Int, completion: @escaping (Bool) -> Void) {
+    func createUser(clientId: Int, name: String, lastName: String, email: String, phoneNumber: String, type: String, external: Bool, permissionsId: Int, temporaryPassword: String, completion: @escaping (Bool) -> Void) {
         
 
-        let createUserModel = CreateUserModel(id: UUID().uuidString, client_id: clientId, name: name, last_name: lastName, email: email, phone_number: phoneNumber, type: type, external: external, permissions: permissionsId)
+        let createUserModel = CreateUserModel(id: UUID().uuidString, client_id: clientId, name: name, last_name: lastName, email: email, phone_number: phoneNumber, type: type, external: external, permissions: permissionsId, temporary_password: temporaryPassword)
         
         
         service.createUser(userModel: createUserModel) { [weak self] result in

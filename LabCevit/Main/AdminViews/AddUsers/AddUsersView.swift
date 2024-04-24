@@ -17,6 +17,7 @@ struct AddUsersView: View {
     @State private var email: String = ""
     @State private var phoneNumber: String = ""
     @State private var type: String = ""
+    @State private var temporaryPassword: String = ""
     @State private var isLoading: Bool = false
     @State private var externalUser: Bool = false
     var clientName: String
@@ -45,6 +46,9 @@ struct AddUsersView: View {
                 TextField("Tipo de usuario", text: $type)
                     .textFieldStyle(.roundedBorder)
                 
+                TextField("Contraseña temporal", text: $temporaryPassword)
+                    .textFieldStyle(.roundedBorder)
+                
                 Toggle("Usuario externo: ", isOn: $externalUser)
                     .padding(.horizontal, 40)
                 
@@ -62,7 +66,7 @@ struct AddUsersView: View {
                     
         
                     self.isLoading = true
-                    viewModel.createUser(clientId: clientId, name: nameText, lastName: lastNameText, email: email, phoneNumber: phoneNumber, type: type, external: externalUser, permissionsId: permissionId) { status in
+                    viewModel.createUser(clientId: clientId, name: nameText, lastName: lastNameText, email: email, phoneNumber: phoneNumber, type: type, external: externalUser, permissionsId: permissionId, temporaryPassword: self.temporaryPassword) { status in
                         self.isLoading = false
                         if status { self.reloadUsers() }
                     }
