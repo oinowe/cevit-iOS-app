@@ -80,40 +80,38 @@ struct ClientsCell: View {
     @State private var showUsersListView = false
     @State private var isShowingUsersView = false
     
-    var fontSize: CGFloat = 20.0
+    var fontSize: CGFloat = 18.0
     
     var body: some View {
         LazyVStack(spacing: 16) {
             ForEach(viewModel.clients, id: \.self) { client in
-                VStack {
-                    HStack {
-                        Text(client.name)
-                            .bold()
-                            .fontWeight(.heavy)
-                            .font(.system(size: fontSize))
-                        Spacer()
-                        Text("\(client.subscription ?? 0)")
-                            .font(.system(size: fontSize))
-                    }
-                    .padding(.horizontal, 8)
-                    HStack {
-                        Text(client.rfc ?? "")
-                            .font(.system(size: fontSize))
-                        Spacer()
-                        Text("\(client.city ?? ""), \(client.state ?? "")")
-                            .font(.system(size: fontSize))
-                    }
-                    .padding(.horizontal, 8)
-                }
-                .onTapGesture {
-                    isShowingUsersView = true
-                }
                 
-                
-                NavigationLink(destination: UsersView(clientId: client.id), isActive: $isShowingUsersView) {
-                    EmptyView()
+                NavigationLink {
+                    UsersView(clientId: client.id, clientName: client.name)
+                } label: {
+                    VStack {
+                        HStack {
+                            Text(client.name)
+                                .bold()
+                                .fontWeight(.heavy)
+                                .font(.system(size: fontSize + 4))
+                            Spacer()
+                            Text("\(client.subscription)")
+                                .font(.system(size: fontSize))
+                        }
+                        .padding(.horizontal, 8)
+                        HStack {
+                            Text(client.rfc ?? "")
+                                .font(.system(size: fontSize))
+                            Spacer()
+                            Text("\(client.city ?? ""), \(client.state ?? "") \(Image(systemName: "map.fill"))")
+                                .font(.system(size: fontSize))
+                        }
+                        .padding(.horizontal, 8)
+                    }
                 }
-                .hidden()
+                .foregroundColor(.black)
+                
                 Divider()
             }
         }

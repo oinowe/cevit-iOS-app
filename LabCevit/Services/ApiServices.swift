@@ -98,6 +98,70 @@ struct ApiServices {
     }
     
     
+    // MARK: Users
+    func getUsersByClientId(clientId: Int, completion: @escaping (Result<[UsersModel], Error>) -> Void) {
+        let url = "\(baseURL)/user"
+        
+        let parameters: [String: Any] = ["clientId": clientId]
+        
+        let headers: HTTPHeaders = [
+            "x-api-key": "\(apiKey)",
+            "Accept": "application/json"
+        ]
+
+        AF.request(url, method: .get, parameters: parameters, headers: headers).responseDecodable(of: UsersResponse.self) { response in
+            switch response.result {
+            case .success(let data):
+                completion(.success(data.users))
+            case .failure(let error):
+                completion(.failure(error))
+            }
+        }
+    }
+    
+    
+    func createUser(userModel: CreateUserModel, completion: @escaping (Result<Bool, Error>) -> Void) {
+        let url = "\(baseURL)/user"
+        let headers: HTTPHeaders = [
+            "x-api-key": "\(apiKey)",
+            "Accept": "application/json",
+            "Content-Type": "application/json"
+        ]
+        
+        print("params: ", userModel)
+
+        AF.request(url, method: .post, parameters: userModel, encoder: JSONParameterEncoder.default, headers: headers)
+            .responseDecodable(of: GenericResponse.self) { response in
+            switch response.result {
+            case .success(_):
+                completion(.success(true))
+            case .failure(let error):
+                completion(.failure(error))
+            }
+        }
+    }
+    
+    
+    // MARK: Permissions
+    func getPermissions(completion: @escaping (Result<[PermissionsModel], Error>) -> Void) {
+        let url = "\(baseURL)/permissions"
+        
+        let headers: HTTPHeaders = [
+            "x-api-key": "\(apiKey)",
+            "Accept": "application/json"
+        ]
+
+        AF.request(url, method: .get, headers: headers).responseDecodable(of: PermissionsResponse.self) { response in
+            switch response.result {
+            case .success(let data):
+                completion(.success(data.permissions))
+            case .failure(let error):
+                completion(.failure(error))
+            }
+        }
+    }
+    
+    
     private func getAccessToken(completion: @escaping(String) -> ()) {
         
     }

@@ -45,7 +45,7 @@ struct AddClientView: View {
                     Text("\($0.name) - \($0.price.clean)")
                 }
             }
-            .pickerStyle(.wheel)
+            .pickerStyle(.menu)
             
             OnboardingContinueButton(action: {
                 

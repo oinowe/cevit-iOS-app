@@ -22,7 +22,7 @@ struct ClientModel: Codable, Identifiable, Hashable {
     let rfc: String?
     let city: String?
     let state: String?
-    let subscription: Int?
+    let subscription: String
     let is_active: Int
     let created_at: String
     let updated_at: String
