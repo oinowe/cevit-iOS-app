@@ -21,7 +21,7 @@ struct TabBarView: View {
                     Label("Search", systemImage: "magnifyingglass")
                 }
             
-            ProfileView()
+            ClientsView()
                 .tabItem {
                     Label("Profile", systemImage: "person")
                 }

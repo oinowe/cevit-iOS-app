@@ -162,6 +162,28 @@ struct ApiServices {
     }
     
     
+    func createPermission(permissionModel: CreatePermissionsModel, completion: @escaping (Result<Bool, Error>) -> Void) {
+        let url = "\(baseURL)/permissions"
+        let headers: HTTPHeaders = [
+            "x-api-key": "\(apiKey)",
+            "Accept": "application/json",
+            "Content-Type": "application/json"
+        ]
+        
+        print("params: ", permissionModel)
+
+        AF.request(url, method: .post, parameters: permissionModel, encoder: JSONParameterEncoder.default, headers: headers)
+            .responseDecodable(of: GenericResponse.self) { response in
+            switch response.result {
+            case .success(_):
+                completion(.success(true))
+            case .failure(let error):
+                completion(.failure(error))
+            }
+        }
+    }
+    
+    
     private func getAccessToken(completion: @escaping(String) -> ()) {
         
     }

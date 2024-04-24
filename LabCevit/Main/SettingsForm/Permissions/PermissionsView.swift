@@ -14,10 +14,10 @@ struct PermissionsView: View {
     
     var body: some View {
         
-//        NavigationLink(destination: AddSubscriptionView(reloadSubs: reloadSubs ), isActive: $isAddingSubscriptionView) {
-//            EmptyView()
-//        }
-//        .hidden()
+        NavigationLink(destination: AddPermissionsView(reloadPermissions: reloadPermissions), isActive: $isAddingPermissionsView) {
+            EmptyView()
+        }
+        .hidden()
         
         List {
             ForEach(viewModel.permissions, id: \.self) { perm in
@@ -63,7 +63,7 @@ struct PermissionsView: View {
     
     
     func reloadPermissions() {
-//        viewModel.fetchSubscriptions()
+        viewModel.fetchPermissions()
     }
 }
 
