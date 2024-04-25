@@ -55,6 +55,7 @@ struct AddUsersView: View {
                 Picker("Tipo de permiso: ", selection: $viewModel.selectedPermission) {
                     ForEach(viewModel.permissions, id: \.self) {
                         Text("\($0.name)")
+                            .tag(($0 as PermissionsModel?))
                     }
                 }
                 .pickerStyle(.menu)

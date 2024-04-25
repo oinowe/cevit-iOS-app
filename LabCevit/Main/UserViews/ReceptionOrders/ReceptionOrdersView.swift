@@ -12,10 +12,7 @@ struct ReceptionOrdersView: View {
         ZStack {
             Color.lightColor.edgesIgnoringSafeArea(.all)
             
-            VStack {
-                Text("Home")
-                    .font(.largeTitle)
-            }
+            
         }
         .navigationTitle("Ordenes")
     }

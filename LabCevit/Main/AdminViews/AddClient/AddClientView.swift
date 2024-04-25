@@ -43,6 +43,7 @@ struct AddClientView: View {
             Picker("Subscripción: ", selection: $viewModel.selectedSubscription) {
                 ForEach(viewModel.subscriptions, id: \.self) {
                     Text("\($0.name) - \($0.price.clean)")
+                        .tag(($0 as SubscriptionsModel?))
                 }
             }
             .pickerStyle(.menu)

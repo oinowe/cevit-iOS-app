@@ -12,6 +12,7 @@ class TabBarViewModel: ObservableObject {
     // TODO: Check data of user
     @Published var activateAdminTab = true
     
+    private var services = ApiServices()
     
     init() {
         fetchGeneralDataOfUser()
@@ -19,6 +20,10 @@ class TabBarViewModel: ObservableObject {
     
     
     func fetchGeneralDataOfUser() {
-        
+        Task {
+            await services.getUserData { result in
+                print(result)
+            }
+        }
     }
 }

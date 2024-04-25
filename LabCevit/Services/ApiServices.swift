@@ -269,8 +269,49 @@ struct ApiServices {
     }
     
     
-    private func getAccessToken(completion: @escaping(String) -> ()) {
+    
+    // MARK: User Data
+    // TODO: Change machine specsmodel to correct one, final not yet have it
+    func getUserData(completion: @escaping (Result<[MachineSpecsModel], Error>) -> Void) async {
+        let url = "\(baseURL)/userData"
         
+        // Retrieve the access token asynchronously
+        guard let token = await getAccessToken() else {
+            completion(.failure(NSError(domain: "No Token", code: 0, userInfo: [NSLocalizedDescriptionKey: "Authentication token not available."])))
+            return
+        }
+        print("Token: \(token)")
+
+        let headers: HTTPHeaders = [
+            "Authorization": "Bearer \(token)",
+            "Accept": "application/json"
+        ]
+
+        AF.request(url, method: .get, headers: headers).responseDecodable(of: MachineSpecsResponse.self) { response in
+            switch response.result {
+            case .success(let data):
+                completion(.success(data.machines))
+            case .failure(let error):
+                completion(.failure(error))
+            }
+        }
+    }
+    
+    
+    private func getAccessToken() async -> String? {
+
+        do {
+            let session = try await Amplify.Auth.fetchAuthSession()
+
+            // Get cognito user pool token
+            if let cognitoTokenProvider = session as? AuthCognitoTokensProvider {
+                let tokens = try cognitoTokenProvider.getCognitoTokens().get()
+                return tokens.accessToken
+            }
+        } catch let error as AuthError {
+            print("Fetch auth session failed with error - \(error)")
+        } catch { }
+        return nil
     }
 }
 
