@@ -12,9 +12,7 @@ struct EmailLoginView: View {
     // MARK: Variables
     @State private var email: String = ""
     @State private var password: String = ""
-    @State private var isOTPShown: Bool = false
     @FocusState private var isTextFieldFocused: Bool
-    @State private var isLoadingAPI: Bool = false
     @State private var isSecure: Bool = false
     @StateObject private var model = EmailLoginModel()
     @State private var userLoggedIn = false
@@ -83,23 +81,22 @@ struct EmailLoginView: View {
                 
                 
                 OnboardingContinueButton(action: {
-                    self.isOTPShown = true
+                    model.isLoadingAPI = true
                     Task {
-                        self.userLoggedIn = true
-                        //await model.signUp(username: UUID().uuidString, password: <#T##String#>, email: <#T##String#>)
+                        await model.signIn(username: self.email, password: self.password)
                     }
-                }, title: "Continuar", isLoading: $isLoadingAPI)
+                }, title: "Continuar", isLoading: $model.isLoadingAPI)
                 
                 
-//                NavigationLink(destination: EmailOTPView(), isActive: $isOTPShown) {
-//                    EmptyView()
-//                }
+                NavigationLink(destination: ResetNewPasswordView(), isActive: $model.moveToResetPassword) {
+                    EmptyView()
+                }
                 
                 Spacer()
             } //: VStack
         } //: ZStack
         .navigationTitle("Iniciar sesion")
-        .fullScreenCover(isPresented: $userLoggedIn, content: {
+        .fullScreenCover(isPresented: $model.moveToHome, content: {
             TabBarView()
         })
     }

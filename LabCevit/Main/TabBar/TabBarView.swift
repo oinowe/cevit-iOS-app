@@ -9,6 +9,9 @@ import SwiftUI
 
 // Main ContentView that includes the TabView
 struct TabBarView: View {
+    
+    @StateObject private var viewModel = TabBarViewModel()
+    
     var body: some View {
         TabView {
             ReceptionOrdersView()
@@ -16,33 +19,21 @@ struct TabBarView: View {
                     Label("Ordenes", systemImage: "newspaper.fill")
                 }
             
-            SearchView()
+            InfoView()
                 .tabItem {
                     Label("Info", systemImage: "person.fill.viewfinder")
                 }
             
-            ClientsView()
-                .tabItem {
-                    Label("Admin", systemImage: "person.badge.shield.checkmark")
-                }
-        }
-    }
-}
-
-
-// Define the Search view
-struct SearchView: View {
-    var body: some View {
-        ZStack {
-            Color.lightColor.edgesIgnoringSafeArea(.all)
-            
-            VStack {
-                Text("Search")
-                    .font(.largeTitle)
+            if viewModel.activateAdminTab {
+                ClientsView()
+                    .tabItem {
+                        Label("Admin", systemImage: "person.badge.shield.checkmark")
+                    }
             }
         }
     }
 }
+
 
 
 #Preview {

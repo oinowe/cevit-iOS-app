@@ -18,22 +18,27 @@ struct SignUpView: View {
         NavigationView {
             VStack {
                 Spacer()
-                
-                Text("Bienvenido a")
+                Text("Laboratorio")
                     .font(.system(size: 32))
                     .foregroundStyle(.black)
                 
                 Text("Cevit")
                     .font(.system(size: 60))
+                    .bold()
                     .foregroundStyle(.black)
+                    .padding(.bottom, -20)
                 
-                Image(systemName: "")
+                Image("icon")
                     .resizable()
                     .scaledToFit()
-                    .padding(.horizontal, 150)
+                    .padding(.horizontal, 100)
+                    .clipShape(.capsule)
+                
+                ContinueWithEmailButton(action: {
+                    isEmailViewShown = true
+                })
                 
                 Spacer()
-                
                 NavigationLink(destination: RegisterView(), isActive: $isLoginViewShown) {
                     EmptyView()
                 }
@@ -42,13 +47,9 @@ struct SignUpView: View {
                     EmptyView()
                 }
                 
-                ContinueWithEmailButton(action: {
-                    isEmailViewShown = true
-                })
-                
-                OnboardingContinueButtonWithIcon(action: {
-                    isLoginViewShown = true
-                }, title: "Registrate", isLoading: .constant(false))
+//                OnboardingContinueButtonWithIcon(action: {
+//                    isLoginViewShown = true
+//                }, title: "Registrate", isLoading: .constant(false))
             }
             .background(Color.lightColor)
         }

@@ -17,6 +17,7 @@ struct ReceptionOrdersView: View {
                     .font(.largeTitle)
             }
         }
+        .navigationTitle("Ordenes")
     }
 }
 

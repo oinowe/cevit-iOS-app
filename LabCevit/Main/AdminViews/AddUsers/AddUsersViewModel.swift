@@ -10,7 +10,6 @@ import Foundation
 // MARK: Model
 
 struct CreateUserModel: Codable {
-    var id: String
     var client_id: Int
     var name: String
     var last_name: String
@@ -60,7 +59,7 @@ class AddUsersViewModel: ObservableObject {
     func createUser(clientId: Int, name: String, lastName: String, email: String, phoneNumber: String, type: String, external: Bool, permissionsId: Int, temporaryPassword: String, completion: @escaping (Bool) -> Void) {
         
 
-        let createUserModel = CreateUserModel(id: UUID().uuidString, client_id: clientId, name: name, last_name: lastName, email: email, phone_number: phoneNumber, type: type, external: external, permissions: permissionsId, temporary_password: temporaryPassword)
+        let createUserModel = CreateUserModel(client_id: clientId, name: name, last_name: lastName, email: email, phone_number: phoneNumber, type: type, external: external, permissions: permissionsId, temporary_password: temporaryPassword)
         
         
         service.createUser(userModel: createUserModel) { [weak self] result in
