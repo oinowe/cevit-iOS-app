@@ -13,7 +13,6 @@ struct AddSubscriptionView: View {
     @Environment(\.presentationMode) var presentationMode
     @State private var nameText: String = ""
     @State private var samplesPerYearText: String = ""
-    @State private var allowedParameters: String = ""
     @State private var price: String = ""
     @State private var isLoading: Bool = false
     var reloadSubs: () -> Void
@@ -29,17 +28,14 @@ struct AddSubscriptionView: View {
             TextField("Muestras por año", text: $samplesPerYearText)
                 .textFieldStyle(.roundedBorder)
             
-            TextField("Parametros permitidos", text: $allowedParameters)
-                .textFieldStyle(.roundedBorder)
-            
-            TextField("Precio", text: $price)
+            TextField("Precio por més", text: $price)
                 .textFieldStyle(.roundedBorder)
             
             
             OnboardingContinueButton(action: {
                 
                 self.isLoading = true
-                viewModel.createSubscription(name: self.nameText, samplesPerYear: self.samplesPerYearText, allowedParameters: self.allowedParameters, price: self.price) { status in
+                viewModel.createSubscription(name: self.nameText, samplesPerYear: self.samplesPerYearText, price_per_month: self.price) { status in
                     self.isLoading = false
                     if status { self.reloadSubs() }
                 }

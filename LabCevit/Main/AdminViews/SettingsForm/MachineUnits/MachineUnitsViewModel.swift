@@ -19,7 +19,11 @@ struct MachineUnitsModel: Codable, Identifiable, Hashable {
     let machine_id: Int
     let name: String
     let unit: String
+    let subscription_id: String
+    let is_id: Int
+    let file_column_position: Int
     let description: String
+    let subscription_names: String
 }
 
 

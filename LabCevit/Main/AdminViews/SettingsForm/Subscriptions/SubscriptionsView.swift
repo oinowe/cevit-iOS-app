@@ -26,9 +26,9 @@ struct SubscriptionsView: View {
                         Text(sub.name)
                             .bold()
                             .font(.system(size: 20))
-                        Text("Precio: \(sub.price.clean)")
+                        Text("Precio: $\(sub.price_per_month.clean)")
                         Text("Muestras por año: \(sub.samples_per_year)")
-                        Text("Parametros: \(sub.allowed_parameters ?? "N/A")")
+                        //Text("Parametros: \(sub.allowed_parameters ?? "N/A")")
                     }
                     Spacer()
                     VStack(alignment: .trailing, content: {

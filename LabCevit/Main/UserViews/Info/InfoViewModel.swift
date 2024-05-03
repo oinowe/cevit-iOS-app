@@ -9,13 +9,53 @@ import Foundation
 import Amplify
 import AWSCognitoAuthPlugin
 
+
+// MARK: Model
+struct UserDataResponse: Codable {
+    let success: Bool
+    let data: UserDataModel
+}
+
+
+struct UserDataModel: Codable, Identifiable, Hashable {
+    let id: String
+    let name: String
+    let last_name: String
+    let email: String
+    let phone_number: String
+    let type: String
+    let client_name: String
+    let permission_name: String
+    let samples_left: Int
+}
+
+
+
 class InfoViewModel: ObservableObject {
     
     @Published var returnToHome = false
+    @Published var userData: UserDataModel?
+    
+    private var services = ApiServices()
     
     init() {
-        
+        fetchUserData()
     }
+    
+    
+    func fetchUserData() {
+        services.getUserData { [weak self] result in
+            DispatchQueue.main.async {
+                switch result {
+                case .success(let data):
+                    self?.userData = data
+                case .failure(let error):
+                    print(error)
+                }
+            }
+        }
+    }
+    
     
     func signOutLocally() async {
         let result = await Amplify.Auth.signOut()

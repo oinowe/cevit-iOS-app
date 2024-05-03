@@ -28,8 +28,12 @@ struct MachineUnitsView: View {
                             .bold()
                             .font(.system(size: 20))
                         Text(unit.unit)
+                        Text("Columna: \(unit.file_column_position)")
                         Text(unit.description)
                             .italic()
+                        Text("ID Principal?: \(Image(systemName: unit.is_id == 1 ? "checkmark.circle.fill" : "xmark.circle.fill"))")
+                            .foregroundColor(unit.is_id == 1 ? .green : .red)
+                        Text("Subscripciones: \(unit.subscription_names)")
                     }
                     Spacer()
                     VStack(alignment: .trailing) {

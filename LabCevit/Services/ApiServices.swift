@@ -269,30 +269,78 @@ struct ApiServices {
     }
     
     
-    
-    // MARK: User Data
-    // TODO: Change machine specsmodel to correct one, final not yet have it
-    func getUserData(completion: @escaping (Result<[MachineSpecsModel], Error>) -> Void) async {
-        let url = "\(baseURL)/userData"
+    // MARK: Reception orders
+    func getReceptionOrders(completion: @escaping (Result<[ReceptionOrdersModel], Error>) -> Void) {
+        let url = "\(baseURL)/receptionOrders"
         
-        // Retrieve the access token asynchronously
-        guard let token = await getAccessToken() else {
-            completion(.failure(NSError(domain: "No Token", code: 0, userInfo: [NSLocalizedDescriptionKey: "Authentication token not available."])))
-            return
-        }
-        print("Token: \(token)")
-
         let headers: HTTPHeaders = [
-            "Authorization": "Bearer \(token)",
+            "x-api-key": "\(apiKey)",
             "Accept": "application/json"
         ]
 
-        AF.request(url, method: .get, headers: headers).responseDecodable(of: MachineSpecsResponse.self) { response in
+        AF.request(url, method: .get, headers: headers).responseDecodable(of: ReceptionOrdersResponse.self) { response in
             switch response.result {
             case .success(let data):
-                completion(.success(data.machines))
+                completion(.success(data.receptionOrders))
             case .failure(let error):
                 completion(.failure(error))
+            }
+        }
+    }
+    
+    
+    // MARK: User Data
+    func getUserData(completion: @escaping (Result<UserDataModel, Error>) -> Void) {
+        let url = "\(baseURL)/userData/data"
+        
+        // Retrieve the access token asynchronously
+        Task {
+            guard let token = await getAccessToken() else {
+                completion(.failure(NSError(domain: "No Token", code: 0, userInfo: [NSLocalizedDescriptionKey: "Authentication token not available."])))
+                return
+            }
+            print("Token: \(token)")
+            
+            let headers: HTTPHeaders = [
+                "Authorization": "Bearer \(token)",
+                "Accept": "application/json"
+            ]
+            
+            AF.request(url, method: .get, headers: headers).responseDecodable(of: UserDataResponse.self) { response in
+                switch response.result {
+                case .success(let data):
+                    completion(.success(data.data))
+                case .failure(let error):
+                    completion(.failure(error))
+                }
+            }
+        }
+    }
+    
+    
+    func getUserPermissions(completion: @escaping (Result<UserDataPermissionsModel, Error>) -> Void) {
+        let url = "\(baseURL)/userData/permissions"
+        
+        // Retrieve the access token asynchronously
+        Task {
+            guard let token = await getAccessToken() else {
+                completion(.failure(NSError(domain: "No Token", code: 0, userInfo: [NSLocalizedDescriptionKey: "Authentication token not available."])))
+                return
+            }
+            print("Token: \(token)")
+            
+            let headers: HTTPHeaders = [
+                "Authorization": "Bearer \(token)",
+                "Accept": "application/json"
+            ]
+            
+            AF.request(url, method: .get, headers: headers).responseDecodable(of: UserDataPermissionsResponse.self) { response in
+                switch response.result {
+                case .success(let data):
+                    completion(.success(data.permissions))
+                case .failure(let error):
+                    completion(.failure(error))
+                }
             }
         }
     }

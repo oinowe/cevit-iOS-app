@@ -19,17 +19,17 @@ struct TabBarView: View {
                     Label("Ordenes", systemImage: "newspaper.fill")
                 }
             
-            InfoView()
-                .tabItem {
-                    Label("Info", systemImage: "person.fill.viewfinder")
-                }
-            
             if viewModel.activateAdminTab {
                 ClientsView()
                     .tabItem {
                         Label("Admin", systemImage: "person.badge.shield.checkmark")
                     }
             }
+            
+            InfoView()
+                .tabItem {
+                    Label("Info", systemImage: "person.fill.viewfinder")
+                }
         }
     }
 }
